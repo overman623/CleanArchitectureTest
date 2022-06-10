@@ -1,4 +1,4 @@
-package com.overman.main.presenter
+package com.overman.main.presenter.common
 
 import android.graphics.Rect
 import android.view.View

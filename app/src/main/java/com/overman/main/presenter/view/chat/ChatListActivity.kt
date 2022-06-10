@@ -1,12 +1,11 @@
-package com.overman.main.presenter.view.main
+package com.overman.main.presenter.view.chat
 
 import androidx.activity.viewModels
 import com.overman.main.R
 import com.overman.main.databinding.ActivityChatListBinding
-import com.overman.main.databinding.ActivityMainBinding
 import com.overman.main.presenter.base.DataBindViewModelActivity
-import com.overman.main.presenter.common.ActionBarCustomView
 import com.overman.main.presenter.util.CLog
+import com.overman.main.presenter.view.todo.TodoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.view.*
 

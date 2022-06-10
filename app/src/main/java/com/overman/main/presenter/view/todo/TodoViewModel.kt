@@ -1,4 +1,4 @@
-package com.overman.main.presenter.view.main
+package com.overman.main.presenter.view.todo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,18 +6,11 @@ import com.overman.main.domain.model.todo.TodoEntity
 import com.overman.main.domain.model.todo.Todo
 import com.overman.main.domain.usecase.todo.TodoUseCase
 import com.overman.main.presenter.base.BaseViewModel
-import com.overman.main.presenter.util.CLog
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
-import retrofit2.HttpException
-import java.lang.Exception
-import java.net.SocketException
-import java.net.UnknownHostException
 import javax.inject.Inject
-import kotlin.coroutines.CoroutineContext
 
 @HiltViewModel
 class TodoViewModel @Inject constructor(private val todoUseCase: TodoUseCase) : BaseViewModel() {

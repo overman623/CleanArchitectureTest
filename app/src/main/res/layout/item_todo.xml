@@ -10,7 +10,7 @@
 
         <variable
             name="viewHolder"
-            type="com.overman.main.presenter.view.main.TodoViewHolder"/>
+            type="com.overman.main.presenter.view.todo.TodoViewHolder"/>
     </data>
 
 <androidx.cardview.widget.CardView

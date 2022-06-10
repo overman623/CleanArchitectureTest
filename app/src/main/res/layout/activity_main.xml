@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.overman.main.presenter.view.main.TodoViewModel" />
+            type="com.overman.main.presenter.view.todo.TodoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
