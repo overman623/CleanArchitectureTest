@@ -18,15 +18,8 @@ abstract class DataBindActivity<B : ViewDataBinding>(@LayoutRes private val layo
         ActionBarCustomView(this, actionBarType)
     }
 
-    /**
-     * 뷰나 액티비티의 속성 등을 초기화.
-     * ex) 리사이클러뷰, 툴바, 드로어뷰..
-     */
     abstract fun initView()
 
-    /**
-     * 리스너 설정 (클릭, 스크롤, 페이저 등)
-     */
     abstract fun initListener()
 
     override fun onCreate(savedInstanceState: Bundle?) {

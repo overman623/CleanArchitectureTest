@@ -13,32 +13,14 @@ abstract class BindViewModelFragment<B : ViewDataBinding, VM : BaseViewModel> : 
     private var _binding: B? = null
     open val binding: B get() = _binding!!
 
-    /**
-     * setContentView로 호출할 Layout의 리소스 id.
-     * ex) R.layout.activity_main
-     */
     abstract val layoutId: Int
 
-    /**
-     * viewModel 로 쓰일 변수.
-     */
     abstract val viewModel: VM
 
-    /**
-     * 뷰나 액티비티의 속성 등을 초기화.
-     * ex) 리사이클러뷰, 툴바, 드로어뷰..
-     */
     abstract fun initView()
 
-    /**
-     * 리스너 설정 (클릭, 스크롤, 페이저 등)
-     */
     abstract fun initListener()
 
-    /**
-     * 데이터 바인딩 및 LiveData 설정.
-     * ex) livedata observe, databinding observe..
-     */
     abstract fun initObserve()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

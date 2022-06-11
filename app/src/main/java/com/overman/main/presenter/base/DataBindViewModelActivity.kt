@@ -8,19 +8,12 @@ import com.overman.main.presenter.util.livedata.EventObserver
 
 abstract class DataBindViewModelActivity<B : ViewDataBinding, VM : BaseViewModel>(@LayoutRes private val layoutId: Int) : DataBindActivity<B>(layoutId) {
 
-    /**
-     * viewModel 로 쓰일 변수.
-     */
     abstract val viewModel: VM
 
     private val loadingDialog: LoadingDialog? by lazy {
         LoadingDialog(this)
     }
 
-    /**
-     * 데이터 바인딩 및 LiveData 설정.
-     * ex) livedata observe, databinding observe..
-     */
     abstract fun initObserve()
 
     override fun onCreate(savedInstanceState: Bundle?) {
