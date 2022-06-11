@@ -6,7 +6,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.overman.main.R
 import com.overman.main.databinding.ActivityMainBinding
 import com.overman.main.presenter.base.DataBindViewModelActivity
-import com.overman.main.presenter.util.CLog
+import com.overman.main.presenter.util.Lg
 import com.overman.main.presenter.view.todo.TodoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -31,7 +31,7 @@ class MainActivity : DataBindViewModelActivity<ActivityMainBinding, TodoViewMode
 
     override fun initObserve() {
         viewModel.todoRemoteData.observe(this) {
-            CLog.d("TEST", it.toString())
+            Lg.d("TEST", it.toString())
         }
         viewModel.todoList()
     }

@@ -4,11 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.overman.main.presenter.util.CLog
+import com.overman.main.presenter.util.Lg
 import com.overman.main.presenter.util.livedata.Event
 import kotlinx.coroutines.*
 import retrofit2.HttpException
-import java.io.Serializable
 import java.net.SocketException
 import java.net.UnknownHostException
 import kotlin.coroutines.CoroutineContext
@@ -34,7 +33,7 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
 
 
     open val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-        CLog.e(throwable.message)
+        Lg.e(throwable.message)
         when (throwable) {
             is SocketException -> viewEvent(EVENT_SOCKET_EXCEPTION) // Bad Internet
             is HttpException -> viewEvent(EVENT_HTTP_EXCEPTION) // Parse Error

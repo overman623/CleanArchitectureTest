@@ -4,7 +4,7 @@ import androidx.activity.viewModels
 import com.overman.main.R
 import com.overman.main.databinding.ActivityChatListBinding
 import com.overman.main.presenter.base.DataBindViewModelActivity
-import com.overman.main.presenter.util.CLog
+import com.overman.main.presenter.util.Lg
 import com.overman.main.presenter.view.todo.TodoViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -27,7 +27,7 @@ class ChatListActivity : DataBindViewModelActivity<ActivityChatListBinding, Todo
 
     override fun initObserve() {
         viewModel.todoRemoteData.observe(this) {
-            CLog.d(it.toString())
+            Lg.d(it.toString())
         }
         viewModel.todoList()
     }

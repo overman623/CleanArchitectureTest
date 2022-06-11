@@ -3,7 +3,7 @@ package com.overman.main.presenter.util
 import android.util.Log
 import com.overman.main.MyApplication
 
-internal object CLog {
+internal object Lg {
 
     private const val mTag = "TODO_APP"
 

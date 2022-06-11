@@ -1,21 +1,19 @@
 package com.overman.main.presenter.extension
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.overman.main.R
-import com.overman.main.presenter.util.CLog
+import com.overman.main.presenter.util.Lg
 import java.text.DecimalFormat
 
 
 @BindingAdapter(value = ["imgUrl", "scaleType"], requireAll = false)
 fun ImageView.loadUrl(imgUrl: String?, scaleType: ImageView.ScaleType?) {
-    CLog.d("IMAGE_TEST","+++=====+++=====+++=====+++=====+++=====+++=====+++=====")
+    Lg.d("IMAGE_TEST","+++=====+++=====+++=====+++=====+++=====+++=====+++=====")
 
     try {
         context?.let {
@@ -35,7 +33,7 @@ fun ImageView.loadUrl(imgUrl: String?, scaleType: ImageView.ScaleType?) {
             }
         }
     } catch (e: Exception) {
-        CLog.e(e.toString())
+        Lg.e(e.toString())
     }
 }
 
@@ -57,7 +55,7 @@ fun ImageView.profileImg(url: String?) {
             }
         }
     } catch (e: Exception) {
-        CLog.e(e.toString())
+        Lg.e(e.toString())
     }
 }
 
