@@ -1,5 +1,7 @@
 package com.overman.main.presenter.view.main
 
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -36,15 +38,40 @@ class MainActivity : DataBindViewModelActivity<ActivityMainBinding, TodoViewMode
         viewModel.todoList()
     }
 
-
     private fun initTab() {
         pagerAdapter = MainPageStateAdapter(supportFragmentManager, lifecycle)
 
-        binding.vpMain.offscreenPageLimit = 4
+        binding.vpMain.offscreenPageLimit = 3
         binding.vpMain.adapter = pagerAdapter
         binding.vpMain.isUserInputEnabled = false
 
         TabLayoutMediator(binding.tlTabMain, binding.vpMain, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+            val tabItem = layoutInflater.inflate(R.layout.layout_main_tabitem, null)
+            val ivTabIcon = tabItem.findViewById<ImageView>(R.id.ivTabIcon)
+            val tvTabBottom = tabItem.findViewById<TextView>(R.id.tvTabBottom)
+
+            when (position) {
+                MainPageStateAdapter.TYPE_HOME -> {
+                    ivTabIcon.setBackgroundResource(R.drawable.selector_tab_icon_home)
+                    tvTabBottom.text = getString(R.string.home)
+                    tab.customView = tabItem
+                }
+                MainPageStateAdapter.TYPE_SHOP -> {
+                    ivTabIcon.setBackgroundResource(R.drawable.selector_tab_icon_shop)
+                    tvTabBottom.text = getString(R.string.shop)
+                    tab.customView = tabItem
+                }
+                MainPageStateAdapter.TYPE_SETTING -> {
+                    ivTabIcon.setBackgroundResource(R.drawable.selector_tab_icon_setting)
+                    tvTabBottom.text = getString(R.string.setting)
+                    tab.customView = tabItem
+                }
+                else -> {
+                    ivTabIcon.setBackgroundResource(R.drawable.selector_tab_icon_home)
+                    tvTabBottom.text = getString(R.string.home)
+                    tab.customView = tabItem
+                }
+            }
         }).attach()
 
         binding.vpMain.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -58,6 +85,8 @@ class MainActivity : DataBindViewModelActivity<ActivityMainBinding, TodoViewMode
 
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
+                when (position) {
+                }
             }
         })
 
