@@ -45,7 +45,7 @@ class MainActivity : DataBindViewModelActivity<ActivityMainBinding, TodoViewMode
         binding.vpMain.adapter = pagerAdapter
         binding.vpMain.isUserInputEnabled = false
 
-        TabLayoutMediator(binding.tlTabMain, binding.vpMain, TabLayoutMediator.TabConfigurationStrategy { tab, position ->
+        TabLayoutMediator(binding.tlTabMain, binding.vpMain, false, false) { tab, position ->
             val tabItem = layoutInflater.inflate(R.layout.layout_main_tabitem, null)
             val ivTabIcon = tabItem.findViewById<ImageView>(R.id.ivTabIcon)
             val tvTabBottom = tabItem.findViewById<TextView>(R.id.tvTabBottom)
@@ -72,23 +72,7 @@ class MainActivity : DataBindViewModelActivity<ActivityMainBinding, TodoViewMode
                     tab.customView = tabItem
                 }
             }
-        }).attach()
-
-        binding.vpMain.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageScrollStateChanged(state: Int) {
-                super.onPageScrollStateChanged(state)
-            }
-
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
-            }
-
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                when (position) {
-                }
-            }
-        })
+        }.attach()
 
         binding.vpMain.currentItem = 0
     }
