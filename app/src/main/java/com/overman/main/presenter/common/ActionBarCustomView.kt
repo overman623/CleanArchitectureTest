@@ -2,23 +2,26 @@ package com.overman.main.presenter.common
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
 import androidx.core.view.forEach
-import androidx.core.view.forEachIndexed
-import androidx.core.view.get
-import androidx.databinding.ViewDataBinding
-import androidx.databinding.adapters.ViewBindingAdapter
 import com.overman.main.R
 import com.overman.main.databinding.LayoutToolbarBinding
 import kotlinx.android.synthetic.main.layout_toolbar.view.*
 
 class ActionBarCustomView (activity: AppCompatActivity, actionbarType: Int?): View.OnClickListener {
+
+    private val backgroundColor = when (actionbarType) {
+        0 -> {
+            ActivityCompat.getColor(activity, R.color.c_ff3258)
+        }
+        else -> {
+            ActivityCompat.getColor(activity, R.color.c_ff3258)
+        }
+    }
 
     private val binding = when (actionbarType) {
         0 -> {
@@ -35,8 +38,12 @@ class ActionBarCustomView (activity: AppCompatActivity, actionbarType: Int?): Vi
         if (actionbarType != null) {
             val actionBar = activity.supportActionBar
             actionBar?.setDisplayShowCustomEnabled(true)
-            val layoutParams = ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
-            actionBar?.setCustomView(binding.root, layoutParams)
+            val layoutParams = ActionBar.LayoutParams(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT)
+
+            val customView: View = binding.root
+            actionBar?.setCustomView(customView, layoutParams)
+            val parent = customView.parent as Toolbar
+            parent.setBackgroundColor(backgroundColor)
         }
     }
 

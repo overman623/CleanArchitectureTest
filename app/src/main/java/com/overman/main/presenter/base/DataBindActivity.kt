@@ -7,8 +7,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.google.android.material.snackbar.Snackbar
 import com.overman.main.presenter.common.ActionBarCustomView
-import kotlinx.android.synthetic.main.activity_main.view.*
-import java.lang.Exception
 
 abstract class DataBindActivity<B : ViewDataBinding>(@LayoutRes private val layoutId: Int) : BaseActivity() {
 
