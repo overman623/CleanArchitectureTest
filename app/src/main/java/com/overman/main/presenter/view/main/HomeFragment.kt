@@ -13,8 +13,17 @@ class HomeFragment: BindFragment<FragmentHomeBinding>(R.layout.fragment_home) {
         }
     }
 
-    override fun initView() {
+    private val itemList = ArrayList<HomeListData>().also {
+        it.add(HomeListData("Item1"))
+        it.add(HomeListData("Item2"))
+        it.add(HomeListData("Item3"))
+        it.add(HomeListData("Item4"))
+    }
 
+    private val homeAdapter = HomeItemAdapter(itemList)
+
+    override fun initView() {
+        binding.rvHomeItem.adapter = homeAdapter
     }
 
     override fun initListener() {
@@ -22,3 +31,5 @@ class HomeFragment: BindFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
 }
+
+data class HomeListData(val title: String)
