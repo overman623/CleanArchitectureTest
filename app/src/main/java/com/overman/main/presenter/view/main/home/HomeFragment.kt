@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.overman.main.R
 import com.overman.main.databinding.FragmentHomeBinding
 import com.overman.main.presenter.base.BindFragment
+import com.overman.main.presenter.common.GridSpacingItemDecoration
 
 class HomeFragment: BindFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
@@ -25,6 +26,10 @@ class HomeFragment: BindFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun initView() {
         binding.rvHomeItem.layoutManager = GridLayoutManager(requireContext(), 2)
+//        val spanCount = 2
+//        val spacing = 25
+//        val includeEdge = true
+//        binding.rvHomeItem.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
         binding.rvHomeItem.adapter = homeAdapter
     }
 

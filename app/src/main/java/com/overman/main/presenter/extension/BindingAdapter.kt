@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.overman.main.R
+import com.overman.main.presenter.common.GridSpacingItemDecoration
 import com.overman.main.presenter.util.Lg
 import java.text.DecimalFormat
 
@@ -70,5 +72,12 @@ fun TextView.steps(steps: Int?) {
         }
     } else {
         "0 걸음"
+    }
+}
+
+@BindingAdapter(value = ["spanCount", "spacing", "includeEdge"], requireAll = false)
+fun RecyclerView.gridSpacingDecoration(spanCount: Int?, spacing: Int?, includeEdge: Boolean?) {
+    spanCount?.let {
+        addItemDecoration(GridSpacingItemDecoration(it.valueInt(), spacing.valueInt(), includeEdge ?: false))
     }
 }
