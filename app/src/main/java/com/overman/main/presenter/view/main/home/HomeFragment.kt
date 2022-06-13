@@ -1,6 +1,7 @@
-package com.overman.main.presenter.view.main
+package com.overman.main.presenter.view.main.home
 
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import com.overman.main.R
 import com.overman.main.databinding.FragmentHomeBinding
 import com.overman.main.presenter.base.BindFragment
@@ -23,6 +24,7 @@ class HomeFragment: BindFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val homeAdapter = HomeItemAdapter(itemList)
 
     override fun initView() {
+        binding.rvHomeItem.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvHomeItem.adapter = homeAdapter
     }
 
@@ -31,5 +33,3 @@ class HomeFragment: BindFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
 }
-
-data class HomeListData(val title: String)

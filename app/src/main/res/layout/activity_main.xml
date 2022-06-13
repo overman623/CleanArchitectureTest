@@ -30,15 +30,7 @@
             app:layout_constraintBottom_toTopOf="@id/tlTabMain"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-<!--        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            imgUrl="@{activity.test}"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>-->
+            app:layout_constraintTop_toBottomOf="@+id/tbToolbar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvRemoteDataSource"

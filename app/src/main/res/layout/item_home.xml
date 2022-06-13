@@ -6,11 +6,11 @@
     <data>
         <variable
             name="homeListData"
-            type="com.overman.main.presenter.view.main.HomeListData"/>
+            type="com.overman.main.presenter.view.main.home.HomeListData"/>
 
         <variable
             name="viewHolder"
-            type="com.overman.main.presenter.view.main.HomeItemViewHolder"/>
+            type="com.overman.main.presenter.view.main.home.HomeItemViewHolder"/>
     </data>
 
 <androidx.cardview.widget.CardView
