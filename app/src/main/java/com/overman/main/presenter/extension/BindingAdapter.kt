@@ -74,10 +74,10 @@ fun TextView.steps(steps: Int?) {
         "0 걸음"
     }
 }
-
-@BindingAdapter(value = ["spanCount", "spacing", "includeEdge"], requireAll = false)
-fun RecyclerView.gridSpacingDecoration(spanCount: Int?, spacing: Int?, includeEdge: Boolean?) {
-    spanCount?.let {
-        addItemDecoration(GridSpacingItemDecoration(it.valueInt(), spacing.valueInt(), includeEdge ?: false))
-    }
-}
+//
+//@BindingAdapter(value = ["spanCount", "spacing", "includeEdge"], requireAll = false)
+//fun RecyclerView.gridSpacingDecoration(spanCount: Int?, spacing: Int?, includeEdge: Boolean?) {
+//    spanCount?.let {
+//        addItemDecoration(GridSpacingItemDecoration(it.valueInt(), spacing.valueInt(), includeEdge ?: false))
+//    }
+//}

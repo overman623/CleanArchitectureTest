@@ -26,10 +26,7 @@ class HomeFragment: BindFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     override fun initView() {
         binding.rvHomeItem.layoutManager = GridLayoutManager(requireContext(), 2)
-//        val spanCount = 2
-//        val spacing = 25
-//        val includeEdge = true
-//        binding.rvHomeItem.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+        binding.rvHomeItem.addItemDecoration(GridSpacingItemDecoration(spanCount = 2, spacing = 25, includeEdge = true))
         binding.rvHomeItem.adapter = homeAdapter
     }
 
