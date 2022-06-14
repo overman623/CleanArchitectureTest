@@ -30,7 +30,7 @@ class SettingFragment: BindFragment<FragmentSettingBinding>(R.layout.fragment_se
 
     override fun initView() {
         binding.rvSetting.layoutManager = GridLayoutManager(requireContext(), 1)
-        binding.rvSetting.addItemDecoration(GridSpacingItemDecoration(spanCount = 1, spacing = 25, includeEdge = true))
+        binding.rvSetting.addItemDecoration(GridSpacingItemDecoration(spanCount = 1, spacing = 0, includeEdge = true))
         binding.rvSetting.adapter = homeAdapter
     }
 
