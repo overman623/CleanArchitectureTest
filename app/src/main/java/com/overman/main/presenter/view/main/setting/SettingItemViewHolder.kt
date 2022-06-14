@@ -14,7 +14,7 @@ class SettingItemViewHolder(private val binding: ItemSettingBinding) : RecyclerV
     }
 
     fun itemClick(view: View) {
-        Toast.makeText(view.context, "btnClick + ${binding.settingListData.title}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(view.context, "btnClick + ${binding.settingListData}", Toast.LENGTH_SHORT).show()
     }
 
 }
