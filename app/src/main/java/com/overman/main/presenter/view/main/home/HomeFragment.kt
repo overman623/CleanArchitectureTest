@@ -25,9 +25,9 @@ class HomeFragment: BindFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private val homeAdapter = HomeItemAdapter(itemList)
 
     override fun initView() {
-        binding.rvHomeItem.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.rvHomeItem.addItemDecoration(GridSpacingItemDecoration(spanCount = 2, spacing = 25, includeEdge = true))
-        binding.rvHomeItem.adapter = homeAdapter
+        binding.rvHome.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvHome.addItemDecoration(GridSpacingItemDecoration(spanCount = 2, spacing = 25, includeEdge = true))
+        binding.rvHome.adapter = homeAdapter
     }
 
     override fun initListener() {
