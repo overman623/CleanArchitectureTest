@@ -6,6 +6,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.overman.main.presenter.view.main.home.HomeFragment
 import com.overman.main.presenter.view.main.setting.SettingFragment
+import com.overman.main.presenter.view.main.shop.ShopFragment
 
 class MainPageStateAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
