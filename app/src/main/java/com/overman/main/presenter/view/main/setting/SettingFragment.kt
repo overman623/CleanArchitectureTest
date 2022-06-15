@@ -1,4 +1,4 @@
-package com.overman.main.presenter.view.main
+package com.overman.main.presenter.view.main.setting
 
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -6,10 +6,6 @@ import com.overman.main.R
 import com.overman.main.databinding.FragmentSettingBinding
 import com.overman.main.presenter.base.BindFragment
 import com.overman.main.presenter.common.GridSpacingItemDecoration
-import com.overman.main.presenter.view.main.home.HomeItemAdapter
-import com.overman.main.presenter.view.main.home.HomeListData
-import com.overman.main.presenter.view.main.setting.SettingItemAdapter
-import com.overman.main.presenter.view.main.setting.SettingListData
 
 class SettingFragment: BindFragment<FragmentSettingBinding>(R.layout.fragment_setting) {
 
