@@ -1,9 +1,6 @@
 package com.overman.main.presenter.di
 
 import com.google.gson.GsonBuilder
-import com.overman.main.domain.repository.todo.TodoRemoteRepository
-import com.overman.main.domain.repository.todo.TodoRemoteRepositoryImpl
-import com.overman.main.presenter.di.ApiModule.provideTodoRemoteApi
 import com.overman.main.presenter.util.CoroutineCallAdapterFactory
 import com.overman.main.presenter.util.Url
 import dagger.Module
