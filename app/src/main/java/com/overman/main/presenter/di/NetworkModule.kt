@@ -21,7 +21,6 @@ object NetworkModule {
     private const val CONNECT_TIMEOUT = 30L
     private const val WRITE_TIMEOUT = 30L
     private const val READ_TIMEOUT = 30L
-    // private val retrofit = provideRetrofit(providesOkHttpClient(providesHttpLoggingInterceptor()))
 
     @Singleton
     @Provides
