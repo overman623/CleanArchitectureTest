@@ -49,6 +49,11 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
         block: suspend CoroutineScope.() -> Unit
     ) = viewModelScope.launch(context + this.exceptionHandler, start, block)
 
+    fun async(
+        context: CoroutineContext = EmptyCoroutineContext,
+        start: CoroutineStart = CoroutineStart.DEFAULT,
+        block: suspend CoroutineScope.() -> Unit
+    ) = viewModelScope.async(context + this.exceptionHandler, start, block)
 
     fun viewEvent(content: Any) {
         _viewEvent.postValue(Event(content))
