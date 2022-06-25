@@ -14,13 +14,19 @@
         android:supportsRtl="true"
         android:name=".MyApplication"
         android:theme="@style/Theme.CleanArchitectureTest">
-        <activity android:name=".presenter.view.main.MainActivity"
+
+        <activity android:name=".presenter.view.splash.SplashActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".presenter.view.main.MainActivity"
+            android:exported="true">
         </activity>
     </application>
 
