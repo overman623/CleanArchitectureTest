@@ -7,5 +7,6 @@ import dagger.hilt.android.HiltAndroidApp
 class MyApplication : MultiDexApplication()  {
     companion object {
         const val TEST = true
+        const val TAG = "MyApplication"
     }
 }

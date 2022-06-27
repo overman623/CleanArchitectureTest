@@ -1,17 +1,18 @@
 package com.overman.main.presenter.extension
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.overman.main.MyApplication.Companion.TAG
 import com.overman.main.R
 import com.overman.main.presenter.common.GridSpacingItemDecoration
 import com.overman.main.presenter.util.Lg
 import java.text.DecimalFormat
-
 
 @BindingAdapter(value = ["imgUrl", "scaleType"], requireAll = false)
 fun ImageView.loadUrl(imgUrl: String?, scaleType: ImageView.ScaleType?) {
@@ -46,18 +47,17 @@ fun ImageView.profileImg(url: String?) {
             if (!url.isNullOrEmpty()) {
                 Glide.with(it)
                     .load(url)
-                    .apply(RequestOptions().circleCrop())
+                    .apply(RequestOptions().placeholder(R.drawable.img_empty))
                     .into(this)
             } else {
                 // default view
                 Glide.with(it)
-                    .load(R.drawable.img_back)
-                    .apply(RequestOptions().circleCrop())
+                    .load(R.drawable.img_empty)
                     .into(this)
             }
         }
     } catch (e: Exception) {
-        Lg.e(e.toString())
+        Log.e(TAG, e.toString())
     }
 }
 
