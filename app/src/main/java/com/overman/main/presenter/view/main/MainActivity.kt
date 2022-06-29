@@ -39,6 +39,7 @@ class MainActivity : DataBindViewModelActivity<ActivityMainBinding, TodoViewMode
     }
 
     // TODO : 탭이 교체할때마다 타이틀 교체 메소드 추가 예정
+    // TODO : 다른 사이트에서 API 로드 예정
 
     private fun initTab() {
         pagerAdapter = MainPageStateAdapter(supportFragmentManager, lifecycle)
