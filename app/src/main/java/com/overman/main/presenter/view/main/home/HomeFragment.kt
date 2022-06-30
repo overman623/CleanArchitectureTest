@@ -16,10 +16,10 @@ class HomeFragment: BindFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     private val itemList = ArrayList<HomeListData>().also {
-        it.add(HomeListData("Item1"))
-        it.add(HomeListData("Item2"))
-        it.add(HomeListData("Item3"))
-        it.add(HomeListData("Item4"))
+        it.add(HomeListData(0, "이미지 선택"))
+        it.add(HomeListData(1, "Item2"))
+        it.add(HomeListData(2, "Item3"))
+        it.add(HomeListData(3, "Item4"))
     }
 
     private val homeAdapter = HomeItemAdapter(itemList)
