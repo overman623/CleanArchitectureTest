@@ -1,5 +1,6 @@
 package com.overman.main.presenter.di
 
+import com.overman.main.data.local.image.ImageDatabase
 import com.overman.main.data.local.todo.TodoDatabase
 import dagger.Module
 import dagger.Provides
@@ -14,5 +15,9 @@ object DaoModule {
     @Provides
     @ViewModelScoped
     fun provideTodoDAO(todoDB: TodoDatabase) = todoDB.todoDAO()
+
+    @Provides
+    @ViewModelScoped
+    fun provideTodoDAO(imageDB: ImageDatabase) = imageDB.imageDAO()
 
 }

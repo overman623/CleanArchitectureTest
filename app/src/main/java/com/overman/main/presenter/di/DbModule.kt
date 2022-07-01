@@ -2,10 +2,8 @@ package com.overman.main.presenter.di
 
 import android.content.Context
 import androidx.room.Room
-import com.overman.main.data.local.todo.TodoDao
+import com.overman.main.data.local.image.ImageDatabase
 import com.overman.main.data.local.todo.TodoDatabase
-import com.overman.main.domain.repository.todo.TodoLocalRepository
-import com.overman.main.domain.repository.todo.TodoLocalRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,6 +22,16 @@ object DbModule {
             context,
             TodoDatabase::class.java,
             TodoDatabase.DATABASE_NAME
+        ).build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideImageDatabase(@ApplicationContext context: Context) : ImageDatabase {
+        return Room.databaseBuilder(
+            context,
+            ImageDatabase::class.java,
+            ImageDatabase.DATABASE_NAME
         ).build()
     }
 
