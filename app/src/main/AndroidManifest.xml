@@ -17,6 +17,8 @@
 
         <activity android:name=".presenter.view.splash.SplashActivity" />
 
+        <activity android:name=".presenter.view.imageselect.ImageSelectActivity" />
+
         <activity android:name=".presenter.view.main.MainActivity"
             android:exported="true">
             <intent-filter>

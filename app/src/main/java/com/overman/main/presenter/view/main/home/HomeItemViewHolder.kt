@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.overman.main.databinding.ItemHomeBinding
+import com.overman.main.presenter.view.imageselect.ImageSelectActivity
 
 class HomeItemViewHolder(private val binding: ItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -20,7 +21,7 @@ class HomeItemViewHolder(private val binding: ItemHomeBinding) : RecyclerView.Vi
         val data = homeListData
         when (data.id) {
             0 -> {
-                view.context.startActivity(Intent())
+                view.context.startActivity(Intent(view.context, ImageSelectActivity::class.java))
             } else -> {
                 Toast.makeText(view.context, "btnClick + ${binding.homeListData}", Toast.LENGTH_SHORT).show()
             }
