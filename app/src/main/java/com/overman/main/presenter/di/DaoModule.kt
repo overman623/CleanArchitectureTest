@@ -18,6 +18,6 @@ object DaoModule {
 
     @Provides
     @ViewModelScoped
-    fun provideTodoDAO(imageDB: ImageDatabase) = imageDB.imageDAO()
+    fun provideImageDAO(imageDB: ImageDatabase) = imageDB.imageDAO()
 
 }
