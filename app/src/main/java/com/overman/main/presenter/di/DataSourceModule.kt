@@ -1,8 +1,12 @@
 package com.overman.main.presenter.di
 
+import com.overman.main.data.local.image.ImageLocalDataSource
+import com.overman.main.data.local.image.ImageLocalDataSourceImpl
 import com.overman.main.data.remote.todo.TodoRemoteDataSourceImpl
 import com.overman.main.data.local.todo.TodoLocalDataSource
 import com.overman.main.data.local.todo.TodoLocalDataSourceImpl
+import com.overman.main.data.remote.image.ImageRemoteDataSource
+import com.overman.main.data.remote.image.ImageRemoteDataSourceImpl
 import com.overman.main.data.remote.todo.TodoRemoteDataSource
 import dagger.Binds
 import dagger.Module
@@ -21,5 +25,11 @@ abstract class DataSourceModule {
 
     @Binds
     abstract fun bindTodoLocalDataSource(todoLocalDataSource: TodoLocalDataSourceImpl): TodoLocalDataSource
+
+    @Binds
+    abstract fun bindImageRemoteDataSource(imageRemoteDataSource: ImageRemoteDataSourceImpl): ImageRemoteDataSource
+
+    @Binds
+    abstract fun bindImageLocalDataSource(imageLocalDataSource: ImageLocalDataSourceImpl): ImageLocalDataSource
 
 }
