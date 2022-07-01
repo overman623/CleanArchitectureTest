@@ -12,12 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:name=".MyApplication"
+        android:screenOrientation="portrait"
         android:theme="@style/Theme.CleanArchitectureTest">
 
-        <activity android:name=".presenter.view.splash.SplashActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
-        </activity>
+        <activity android:name=".presenter.view.splash.SplashActivity" />
 
         <activity android:name=".presenter.view.main.MainActivity"
             android:exported="true">
