@@ -1,6 +1,7 @@
 package com.overman.main.presenter.di
 
 import com.overman.main.data.local.todo.TodoApi
+import com.overman.main.data.remote.image.ImageApi
 import com.overman.main.data.remote.todo.TodoRemoteDataSource
 import com.overman.main.data.remote.todo.TodoRemoteDataSourceImpl
 import dagger.Module
@@ -17,5 +18,9 @@ object ApiModule {
     @Provides
     @ViewModelScoped
     fun provideTodoRemoteApi(@JsonPlaceHolderRetrofit retrofit: Retrofit): TodoApi = retrofit.create(TodoApi::class.java)
+
+    @Provides
+    @ViewModelScoped
+    fun provideImageRemoteApi(@PicsumRetrofit retrofit: Retrofit): ImageApi = retrofit.create(ImageApi::class.java)
 
 }
