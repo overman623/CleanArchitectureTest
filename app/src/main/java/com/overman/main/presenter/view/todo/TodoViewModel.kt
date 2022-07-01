@@ -37,7 +37,6 @@ class TodoViewModel @Inject constructor(private val todoUseCase: TodoUseCase) : 
         }
 //        _todoLocalData.postValue(todoUseCase.getLocalData())
 
-        delay(1000)
         hideLoadingView()
 
         if (!result.isNullOrEmpty()) {
