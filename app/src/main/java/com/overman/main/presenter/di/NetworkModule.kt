@@ -12,6 +12,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
+import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module
@@ -21,6 +23,26 @@ object NetworkModule {
     private const val CONNECT_TIMEOUT = 30L
     private const val WRITE_TIMEOUT = 30L
     private const val READ_TIMEOUT = 30L
+
+    @JsonPlaceHolderRetrofit
+    @Singleton
+    @Provides
+    fun provideJsonPlaceHolderRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .baseUrl(Url.BASE_URL)
+        .client(okHttpClient)
+        .build()
+
+    @PicsumRetrofit
+    @Singleton
+    @Provides
+    fun providePicsumRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+        .baseUrl(Url.BASE_URL)
+        .client(okHttpClient)
+        .build()
 
     @Singleton
     @Provides
@@ -41,14 +63,22 @@ object NetworkModule {
             .addInterceptor(httpLoggingInterceptor)
             .build()
 
-    @Singleton
-    @Provides
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
-        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-        .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .baseUrl(Url.BASE_URL)
-        .client(okHttpClient)
-        .build()
-
+//    @Singleton
+//    @Provides
+//    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+//        .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+//        .addCallAdapterFactory(CoroutineCallAdapterFactory())
+//        .baseUrl(Url.BASE_URL)
+//        .client(okHttpClient)
+//        .build()
 
 }
+
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class JsonPlaceHolderRetrofit
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class PicsumRetrofit

@@ -16,6 +16,6 @@ object ApiModule {
 
     @Provides
     @ViewModelScoped
-    fun provideTodoRemoteApi(retrofit: Retrofit): TodoApi = retrofit.create(TodoApi::class.java)
+    fun provideTodoRemoteApi(@JsonPlaceHolderRetrofit retrofit: Retrofit): TodoApi = retrofit.create(TodoApi::class.java)
 
 }

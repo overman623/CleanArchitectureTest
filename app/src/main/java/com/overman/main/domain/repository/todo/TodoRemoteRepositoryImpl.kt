@@ -5,10 +5,10 @@ import com.overman.main.data.remote.todo.TodoResponse
 import javax.inject.Inject
 
 //class TodoRemoteRepositoryImpl @Inject constructor(private val todoRemoteService: TodoApi) :
-class TodoRemoteRepositoryImpl @Inject constructor(private val todoRemoteService: TodoRemoteDataSource) :
+class TodoRemoteRepositoryImpl @Inject constructor(private val todoRemoteDataSource: TodoRemoteDataSource) :
     TodoRemoteRepository {
 
-    override suspend fun getData(): List<TodoResponse> = todoRemoteService.getTodoDataAsync()
+    override suspend fun getData(): List<TodoResponse> = todoRemoteDataSource.getTodoDataAsync()
 
 
 }
