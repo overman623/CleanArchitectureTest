@@ -13,7 +13,7 @@ import kotlinx.coroutines.*
 import javax.inject.Inject
 
 @HiltViewModel
-class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUseCase)  : BaseViewModel() {
+class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUseCase) : BaseViewModel() {
 
     companion object {
         const val TAG = "ImageData"
@@ -27,44 +27,38 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
     private val currentPage: LiveData<Int>
         get() = _currentPage
 
-    private val _isProgress = MutableLiveData<Boolean>()
-    val isProgress: LiveData<Boolean>
-        get() = _isProgress
-
     fun loadImageData(limit: Int) {
-        _isProgress.postValue(true)
+        showLoadingView()
         _currentPage.postValue(0)
         viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
             Log.e(TAG, throwable.message ?: "")
-            _isProgress.postValue(false)
+            hideLoadingView()
         }) {
             imageUseCase.deleteLocalData()
             val result = imageUseCase.getRemoteData(0, limit)
             processImageData(result)
             withContext(Dispatchers.Main) {
-                _isProgress.postValue(false)
+                hideLoadingView()
             }
         }
     }
 
     fun loadNextImageData(limit: Int) {
-        if (isProgress.value != true) {
-            val nextPage = (currentPage.value?.let { it + 1 } ?: 0)
-            _currentPage.postValue(nextPage)
-            getImageData(page = nextPage, limit)
-        }
+        val nextPage = (currentPage.value?.let { it + 1 } ?: 0)
+        _currentPage.postValue(nextPage)
+        getImageData(page = nextPage, limit)
     }
 
     private fun getImageData(page: Int, limit: Int) {
-        _isProgress.postValue(true)
+        showLoadingView()
         viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
             Log.e(TAG, throwable.message ?: "")
-            _isProgress.postValue(false)
+            hideLoadingView()
         }) {
             val result = imageUseCase.getRemoteData(page, limit)
             processImageData(result)
             withContext(Dispatchers.Main) {
-                _isProgress.postValue(false)
+                hideLoadingView()
             }
         }
     }
