@@ -4,4 +4,13 @@
     <string name="shop">상점</string>
     <string name="setting">설정</string>
     <string name="main_next_data">다음 데이터 로드</string>
+    <string name="check_like">좋아요</string>
+
+    <string name="id">id : %s</string>
+    <string name="like">좋아요 : %s</string>
+    <string name="author">author : %s</string>
+    <string name="width">width : %d</string>
+    <string name="height">height : %d</string>
+    <string name="url">url : %s</string>
+
 </resources>
