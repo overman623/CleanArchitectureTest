@@ -1,9 +1,6 @@
 package com.overman.main.presenter.view.imageselect
 
-import android.content.Intent
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,13 +17,14 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
 
     override val actionBarType: Int = 0
 
-    lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
+    private val imageAdapter = ImageAdapter()
 
     override fun initListener() {
     }
 
     override fun initObserve() {
-        viewModel.imageDataList.observe(this) { imageDataList ->
+        viewModel.imageDataList.observe(this) { imageList ->
+            imageAdapter.setImageList(imageList)
         }
     }
 
@@ -36,11 +34,8 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
         }
         binding.viewModel = viewModel
 
-        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-
-        }
-
         with (binding.rvImageDataListView) {
+            adapter = imageAdapter
             layoutManager = GridLayoutManager(this@ImageSelectActivity,1)
             addOnScrollListener(object: RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {

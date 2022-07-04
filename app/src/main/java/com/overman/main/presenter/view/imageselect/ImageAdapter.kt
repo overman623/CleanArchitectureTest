@@ -7,14 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.overman.main.databinding.ItemImageBinding
 import com.overman.main.domain.model.image.Image
 
-class ImageAdapter(private val imageList: MutableList<Image>): RecyclerView.Adapter<ImageViewHolder>() {
+class ImageAdapter(private val imageList: MutableList<Image> = mutableListOf()): RecyclerView.Adapter<ImageViewHolder>() {
 
     fun setImageList(updatedImageList: List<Image>) {
-        val diffResult = DiffUtil.calculateDiff(ImageDiffUtilCallback(imageList, updatedImageList))
+        val diffResult = getDiffResult(updatedImageList)
         imageList.clear()
         imageList.addAll(updatedImageList)
         diffResult.dispatchUpdatesTo(this)
     }
+
+    fun clearImageList() {
+        val diffResult = getDiffResult(mutableListOf())
+        imageList.clear()
+        diffResult.dispatchUpdatesTo(this)
+    }
+
+    private fun getDiffResult(updatedImageList: List<Image>) = DiffUtil.calculateDiff(ImageDiffUtilCallback(imageList, updatedImageList))
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val binding = ItemImageBinding.inflate(LayoutInflater.from(parent.context))
