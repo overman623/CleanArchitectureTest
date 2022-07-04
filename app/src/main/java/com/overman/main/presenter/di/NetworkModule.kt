@@ -40,7 +40,7 @@ object NetworkModule {
     fun providePicsumRetrofit(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .baseUrl(Url.BASE_URL)
+        .baseUrl(Url.BASE_URL2)
         .client(okHttpClient)
         .build()
 

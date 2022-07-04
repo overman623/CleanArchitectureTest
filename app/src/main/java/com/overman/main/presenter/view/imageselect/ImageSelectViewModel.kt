@@ -8,6 +8,7 @@ import com.overman.main.domain.model.image.Image
 import com.overman.main.domain.model.image.mapper
 import com.overman.main.domain.usecase.image.ImageUseCase
 import com.overman.main.presenter.base.BaseViewModel
+import com.overman.main.presenter.util.livedata.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import javax.inject.Inject
@@ -28,17 +29,17 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
         get() = _currentPage
 
     fun loadImageData(limit: Int) {
-        showLoadingView()
+        viewEvent(Event(EVENT_SHOW_LOADING_VIEW))
         _currentPage.postValue(0)
         viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
             Log.e(TAG, throwable.message ?: "")
-            hideLoadingView()
+            viewEvent(Event(EVENT_HIDE_LOADING_VIEW))
         }) {
             imageUseCase.deleteLocalData()
             val result = imageUseCase.getRemoteData(0, limit)
             processImageData(result)
             withContext(Dispatchers.Main) {
-                hideLoadingView()
+                viewEvent(Event(EVENT_HIDE_LOADING_VIEW))
             }
         }
     }
@@ -50,15 +51,15 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
     }
 
     private fun getImageData(page: Int, limit: Int) {
-        showLoadingView()
+        viewEvent(Event(EVENT_SHOW_LOADING_VIEW))
         viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
             Log.e(TAG, throwable.message ?: "")
-            hideLoadingView()
+            viewEvent(Event(EVENT_HIDE_LOADING_VIEW))
         }) {
             val result = imageUseCase.getRemoteData(page, limit)
             processImageData(result)
             withContext(Dispatchers.Main) {
-                hideLoadingView()
+                viewEvent(Event(EVENT_HIDE_LOADING_VIEW))
             }
         }
     }
