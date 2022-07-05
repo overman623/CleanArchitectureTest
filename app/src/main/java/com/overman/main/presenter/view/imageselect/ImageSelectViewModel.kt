@@ -30,7 +30,7 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
 
     fun loadImageData(limit: Int) {
         viewEvent(Event(EVENT_SHOW_LOADING_VIEW))
-        _currentPage.postValue(0)
+        _currentPage.postValue(1)
         viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
             Log.e(TAG, throwable.message ?: "")
             viewEvent(Event(EVENT_HIDE_LOADING_VIEW))
