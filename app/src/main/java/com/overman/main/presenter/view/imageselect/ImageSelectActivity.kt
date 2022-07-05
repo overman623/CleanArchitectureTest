@@ -24,7 +24,7 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
 
     override fun initObserve() {
         viewModel.imageDataList.observe(this) { imageList ->
-            imageAdapter.setImageList(imageList)
+            imageAdapter.addImageList(imageList)
         }
     }
 

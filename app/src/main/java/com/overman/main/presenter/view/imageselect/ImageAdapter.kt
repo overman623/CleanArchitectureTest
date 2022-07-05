@@ -16,6 +16,15 @@ class ImageAdapter(private val imageList: MutableList<Image> = mutableListOf()):
         diffResult.dispatchUpdatesTo(this)
     }
 
+    fun addImageList(updatedImageList: List<Image>) {
+        val diffResult = getDiffResult(ArrayList<Image>().apply {
+            addAll(imageList)
+            addAll(updatedImageList)
+        })
+        imageList.addAll(updatedImageList)
+        diffResult.dispatchUpdatesTo(this)
+    }
+
     fun clearImageList() {
         val diffResult = getDiffResult(mutableListOf())
         imageList.clear()
