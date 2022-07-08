@@ -17,14 +17,6 @@ class ImageDiffUtilCallback(private val oldList: List<Image>, private val newLis
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return when {
-            oldList[oldItemPosition].id == newList[newItemPosition].id -> true
-            else -> false
-        }
+        return oldList[oldItemPosition] == newList[newItemPosition]
     }
-
-    override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
-        return super.getChangePayload(oldItemPosition, newItemPosition)
-    }
-
 }
