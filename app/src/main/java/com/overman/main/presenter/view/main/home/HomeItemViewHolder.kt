@@ -9,6 +9,10 @@ import com.overman.main.presenter.view.imageselect.ImageSelectActivity
 
 class HomeItemViewHolder(private val binding: ItemHomeBinding) : RecyclerView.ViewHolder(binding.root) {
 
+    companion object {
+        const val IMAGE_SELECT_INDEX = 0
+    }
+
     lateinit var homeListData: HomeListData
 
     fun bind(item: HomeListData) {
@@ -20,7 +24,7 @@ class HomeItemViewHolder(private val binding: ItemHomeBinding) : RecyclerView.Vi
     fun itemClick(view: View) {
         val data = homeListData
         when (data.id) {
-            0 -> {
+            IMAGE_SELECT_INDEX -> {
                 view.context.startActivity(Intent(view.context, ImageSelectActivity::class.java))
             } else -> {
                 Toast.makeText(view.context, "btnClick + ${binding.homeListData}", Toast.LENGTH_SHORT).show()

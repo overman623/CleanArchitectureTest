@@ -35,7 +35,7 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
             Log.e(TAG, throwable.message ?: "")
             viewEvent(Event(EVENT_HIDE_LOADING_VIEW))
         }) {
-            imageUseCase.deleteLocalData()
+//            imageUseCase.deleteLocalData()
             val result = imageUseCase.getRemoteData(0, limit)
             processImageData(result)
             withContext(Dispatchers.Main) {
@@ -68,6 +68,7 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
         if (imageList.isNotEmpty()) {
             _imageResponseDataList.postValue(imageList)
             imageUseCase.insertAll(imageList.map { imageData -> imageData.mapper() })
+            // 데이터 일치 확인 및 갱신
         }
     }
 

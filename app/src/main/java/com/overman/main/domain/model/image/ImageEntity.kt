@@ -1,6 +1,5 @@
 package com.overman.main.domain.model.image
 
-import android.media.Image
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.overman.main.data.local.image.ImageDatabase
