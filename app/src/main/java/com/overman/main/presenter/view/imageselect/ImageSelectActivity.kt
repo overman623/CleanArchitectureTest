@@ -23,13 +23,11 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
     }
 
     override fun initObserve() {
-        viewModel.imageDataList.observe(this) { imageList ->
+        viewModel.imageResponseDataList.observe(this) { imageList ->
             imageAdapter.addImageList(imageList)
         }
     }
 
-    // TODO : 데이터 베이스 캐싱 구현 예정.
-    // api를 통해 받은 데이터가 데이터베이스도 있는지 확인예정.
     override fun initView() {
         setActionBar(binding.root.tbToolbar).also {
             it.setTitleText("타이틀")

@@ -21,13 +21,14 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
     }
 
     private val _imageResponseDataList = MutableLiveData<List<Image>>()
-    val imageDataList: LiveData<List<Image>>
+    val imageResponseDataList: LiveData<List<Image>>
         get() = _imageResponseDataList
 
     private val _currentPage = MutableLiveData<Int>()
     private val currentPage: LiveData<Int>
         get() = _currentPage
 
+    // 엑티비티 실행시 처음으로 불러내는 데이터
     fun loadImageData(limit: Int) {
         viewEvent(Event(EVENT_SHOW_LOADING_VIEW))
         _currentPage.postValue(1)
@@ -35,9 +36,21 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
             Log.e(TAG, throwable.message ?: "")
             viewEvent(Event(EVENT_HIDE_LOADING_VIEW))
         }) {
-//            imageUseCase.deleteLocalData()
+
+            // 1. 메모리에 데이터가 있는지 확인
+            imageResponseDataList.value?.forEach { it ->
+
+            }?:let {
+                // 2. 데이터 베이스에 데이터가 있는지 확인
+//                imageUseCase.getLocalDataList() // 모든 데이터에 대한 리스트 값을 가져와야함.
+            }
+
+            // 3. 둘다 데이터가 없으면, api로 데이터 호출
             val result = imageUseCase.getRemoteData(0, limit)
+
+            // 4. 데이터 호출 완료시 데이터 베이스에 데이터 추가
             processImageData(result)
+
             withContext(Dispatchers.Main) {
                 viewEvent(Event(EVENT_HIDE_LOADING_VIEW))
             }
