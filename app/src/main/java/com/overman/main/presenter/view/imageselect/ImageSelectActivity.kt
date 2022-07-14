@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.view.*
 
 @AndroidEntryPoint
 class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding, ImageSelectViewModel>(R.layout.activity_image_select)  {
-
+    //https://appmattus.medium.com/caching-made-simple-on-android-d6e024e3726b
     override val viewModel: ImageSelectViewModel by viewModels()
 
     override val actionBarType: Int = 0
@@ -48,6 +48,6 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
             })
         }
 
-        viewModel.loadImageData(100)
+        viewModel.loadImageData(10)
     }
 }
