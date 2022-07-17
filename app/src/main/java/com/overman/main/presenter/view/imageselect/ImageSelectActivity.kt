@@ -42,7 +42,7 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
                     super.onScrollStateChanged(recyclerView, newState)
                     if (!binding.rvImageDataListView.canScrollVertically(1)) {
                         Toast.makeText(this@ImageSelectActivity, getString(R.string.main_next_data), Toast.LENGTH_SHORT).show()
-                        viewModel.loadNextImageData(1)
+                        viewModel.loadNextImageData(10)
                     }
                 }
             })

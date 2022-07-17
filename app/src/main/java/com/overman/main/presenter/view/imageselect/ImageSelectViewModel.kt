@@ -40,7 +40,14 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
             imageResponseDataList.value?: let {
                 val list = imageUseCase.getLocalDataList() // 모든 데이터에 대한 리스트 값을 가져와야함.
                 if (list.isNotEmpty()) {
-                     Log.d(TAG, "2. 데이터 베이스에 데이터가 있는지 확인")
+                    Log.d(TAG, "2. 데이터 베이스에 데이터가 있는지 확인")
+                    val sb = StringBuilder()
+                    list.forEach {
+                        sb.append(it.id).append(',')
+                    }
+                    Log.d(TAG, "list ids : ${sb.toString()}")
+                    Log.d(TAG, "list size : ${list.size}")
+                    Log.d(TAG, "currentPage : ${(list.size * 0.1f).toInt()}")
                     // 기존 데이터 베이스에서 데이터를 가져오기 때문에 데이터 베이스는 갱신하지 않음.
                     _currentPage.postValue((list.size * 0.1f).toInt())
                     _imageResponseDataList.postValue(list.map { it.mapper() })
@@ -61,11 +68,12 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
 
     fun loadNextImageData(limit: Int) {
         val nextPage = (currentPage.value?.let { it + 1 } ?: 0)
+        Log.d(TAG, "nextPage : $nextPage")
         _currentPage.postValue(nextPage)
-        getImageData(page = nextPage, limit)
+        loadImageData(page = nextPage, limit)
     }
 
-    private fun getImageData(page: Int, limit: Int) {
+    private fun loadImageData(page: Int, limit: Int) {
         viewEvent(Event(EVENT_SHOW_LOADING_VIEW))
         viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
             Log.e(TAG, throwable.message ?: "")
