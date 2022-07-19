@@ -17,7 +17,10 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
 
     override val actionBarType: Int = 0
 
-    private val imageAdapter = ImageAdapter()
+    private val imageAdapter = ImageAdapter(actionCheckLike = { id, like ->
+        //좋아요 기능 갱신
+        true
+    })
 
     override fun initListener() {
     }
@@ -49,5 +52,11 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
         }
 
         viewModel.loadImageData(10)
+    }
+
+    fun executeDetailActivity(id: String?) {
+        if (id != null) {
+
+        }
     }
 }

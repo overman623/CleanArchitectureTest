@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.overman.main.databinding.ItemImageBinding
 import com.overman.main.domain.model.image.Image
 
-class ImageViewHolder(private val binding: ItemImageBinding, private val actionCheckLike: ((String, Int) -> Boolean)? = null, private val actionItemClick: ((String?) -> Unit)? = null) : RecyclerView.ViewHolder(binding.root) {
+class ImageViewHolder(private val binding: ItemImageBinding, private val actionCheckLike: ((String, Int) -> Boolean)? = null) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(image: Image) {
         binding.image = image
@@ -13,7 +13,7 @@ class ImageViewHolder(private val binding: ItemImageBinding, private val actionC
     }
 
     fun itemClick(view: View) {
-        actionItemClick?.invoke(binding.image?.id)
+        (view.context as? ImageSelectActivity)?.executeDetailActivity(binding.image?.id)
     }
 
     fun checkLike(view: View) {

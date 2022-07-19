@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.overman.main.databinding.ItemImageBinding
 import com.overman.main.domain.model.image.Image
 
-class ImageAdapter(private val imageList: MutableList<Image> = mutableListOf()): RecyclerView.Adapter<ImageViewHolder>() {
+class ImageAdapter(private val imageList: MutableList<Image> = mutableListOf(), private val actionCheckLike: ((String, Int) -> Boolean)? = null): RecyclerView.Adapter<ImageViewHolder>() {
+
+    // TODO : Diffutil listAdapter로 전환 예정.
 
     fun setImageList(updatedImageList: List<Image>) {
         val diffResult = getDiffResult(updatedImageList)
