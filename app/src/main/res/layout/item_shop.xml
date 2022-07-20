@@ -6,11 +6,11 @@
     <data>
         <variable
             name="shopListData"
-            type="com.overman.main.presenter.view.main.shop.ShopListData"/>
+            type="com.overman.main.presenter.view.main.jetpack.JetpackListData"/>
 
         <variable
             name="viewHolder"
-            type="com.overman.main.presenter.view.main.shop.ShopItemViewHolder"/>
+            type="com.overman.main.presenter.view.main.jetpack.JetpackItemViewHolder"/>
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

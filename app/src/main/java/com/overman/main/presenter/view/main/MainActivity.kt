@@ -3,7 +3,6 @@ package com.overman.main.presenter.view.main
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.viewModels
-import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
 import com.overman.main.R
 import com.overman.main.databinding.ActivityMainBinding
@@ -59,9 +58,9 @@ class MainActivity : DataBindViewModelActivity<ActivityMainBinding, TodoViewMode
                     tvTabBottom.text = getString(R.string.home)
                     tab.customView = tabItem
                 }
-                MainPageStateAdapter.TYPE_SHOP -> {
-                    ivTabIcon.setBackgroundResource(R.drawable.selector_tab_icon_shop)
-                    tvTabBottom.text = getString(R.string.shop)
+                MainPageStateAdapter.TYPE_JETPACK -> {
+                    ivTabIcon.setBackgroundResource(R.drawable.selector_tab_icon_jetpack)
+                    tvTabBottom.text = getString(R.string.jetpack)
                     tab.customView = tabItem
                 }
                 MainPageStateAdapter.TYPE_SETTING -> {

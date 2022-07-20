@@ -6,13 +6,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.overman.main.presenter.view.main.home.HomeFragment
 import com.overman.main.presenter.view.main.setting.SettingFragment
-import com.overman.main.presenter.view.main.shop.ShopFragment
+import com.overman.main.presenter.view.main.jetpack.JetpackFragment
 
 class MainPageStateAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
     companion object {
         const val TYPE_HOME = 0
-        const val TYPE_SHOP = 1
+        const val TYPE_JETPACK = 1
         const val TYPE_SETTING = 2
         const val TOTAL_COUNT = 3
     }
@@ -30,8 +30,8 @@ class MainPageStateAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycl
                 fragmentList.add(fragment)
                 fragment
             }
-            TYPE_SHOP -> {
-                val fragment = ShopFragment.newInstance()
+            TYPE_JETPACK -> {
+                val fragment = JetpackFragment.newInstance()
                 fragmentList.add(fragment)
                 fragment
             }
