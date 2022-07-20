@@ -14,9 +14,6 @@ class ImageViewHolder(private val binding: ItemImageBinding, private val actionC
 
     fun itemClick(view: View) {
         (view.context as? ImageSelectActivity)?.executeDetailActivity(binding.image?.id)
-//        view.context.startActivity(Intent(view.context, ImageDetailActivity::class.java).apply {
-//                putExtra("", id)
-//        })
     }
 
     fun checkLike(view: View) {
