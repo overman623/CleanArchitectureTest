@@ -1,6 +1,10 @@
 package com.overman.main.presenter.view.imageselect
 
+import android.content.Context
+import android.content.Intent
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,8 +18,8 @@ import kotlinx.android.synthetic.main.activity_main.view.*
 class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding, ImageSelectViewModel>(R.layout.activity_image_select)  {
     //https://appmattus.medium.com/caching-made-simple-on-android-d6e024e3726b
     override val viewModel: ImageSelectViewModel by viewModels()
-
     override val actionBarType: Int = 0
+    private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
     private val imageAdapter = ImageAdapter(actionCheckLike = { id, like ->
         //좋아요 기능 갱신
@@ -23,6 +27,9 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
     })
 
     override fun initListener() {
+        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+
+        }
     }
 
     override fun initObserve() {
@@ -56,7 +63,9 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
 
     fun executeDetailActivity(id: String?) {
         if (id != null) {
-
+            activityResultLauncher.launch(Intent(this@ImageSelectActivity, ImageDetailActivity::class.java).apply {
+                putExtra("", id)
+            })
         }
     }
 }
