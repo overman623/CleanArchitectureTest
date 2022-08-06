@@ -1,10 +1,12 @@
 <resources>
     <string name="app_name">CleanArchitectureTest</string>
     <string name="home">홈</string>
-    <string name="shop">상점</string>
+    <string name="jetpack">Jetpack</string>
     <string name="setting">설정</string>
     <string name="main_next_data">다음 데이터 로드</string>
     <string name="check_like">좋아요</string>
+    <string name="prev">이전 데이터</string>
+    <string name="next">다음 데이터</string>
 
     <string name="id">id : %s</string>
     <string name="like">좋아요 : %s</string>
