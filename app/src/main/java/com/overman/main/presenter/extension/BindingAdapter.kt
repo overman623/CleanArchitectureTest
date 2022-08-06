@@ -81,3 +81,8 @@ fun TextView.steps(steps: Int?) {
 //        addItemDecoration(GridSpacingItemDecoration(it.valueInt(), spacing.valueInt(), includeEdge ?: false))
 //    }
 //}
+
+//@BindingAdapter("setGettyImageList")
+//fun RecyclerView.setEmployAdapterItems(items: List<GettyImageResponse>?) {
+//    items?.let((adapter as GettyImageAdapter)::submitList)
+//}
