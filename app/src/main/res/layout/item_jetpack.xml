@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="shopListData"
+            name="jetpackListData"
             type="com.overman.main.presenter.view.main.jetpack.JetpackListData"/>
 
         <variable
@@ -25,7 +25,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:text="@{shopListData.title}"
+        android:text="@{jetpackListData.title}"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

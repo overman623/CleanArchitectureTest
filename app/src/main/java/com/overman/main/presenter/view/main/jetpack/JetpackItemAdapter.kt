@@ -3,12 +3,12 @@ package com.overman.main.presenter.view.main.jetpack
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.overman.main.databinding.ItemShopBinding
+import com.overman.main.databinding.ItemJetpackBinding
 
 class JetpackItemAdapter(private var itemList: ArrayList<JetpackListData>) : RecyclerView.Adapter<JetpackItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JetpackItemViewHolder {
-        val binding = ItemShopBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = ItemJetpackBinding.inflate(LayoutInflater.from(parent.context))
         return JetpackItemViewHolder(binding)
     }
 
