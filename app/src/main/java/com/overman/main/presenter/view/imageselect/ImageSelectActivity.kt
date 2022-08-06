@@ -13,6 +13,7 @@ import com.overman.main.presenter.base.DataBindViewModelActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.view.*
 
+
 @AndroidEntryPoint
 class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding, ImageSelectViewModel>(R.layout.activity_image_select) {
     //https://appmattus.medium.com/caching-made-simple-on-android-d6e024e3726b
@@ -20,20 +21,22 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
     override val actionBarType: Int = 0
     private lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
-    private val imageAdapter = ImageAdapter(actionCheckLike = { id, like ->
-        //좋아요 기능 갱신
-        true
-    })
+    private val imageAdapter by lazy {
+        ImageAdapter(actionCheckLike = { id, like ->
+            true
+        })
+    }
 
     override fun initListener() {
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-
+//            it.resultCode
+//            it.data?.getIntExtra()
         }
     }
 
     override fun initObserve() {
         viewModel.imageResponseDataList.observe(this) { imageList ->
-            imageAdapter.addImageList(imageList)
+            imageAdapter.addData(imageList)
         }
     }
 
