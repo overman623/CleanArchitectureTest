@@ -82,7 +82,7 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
         }
     }
 
-    private suspend fun processImageData(imageList: List<Image>) {
+    private fun processImageData(imageList: List<Image>) {
         if (imageList.isNotEmpty()) {
             _imageResponseDataList.postValue(imageList)
             imageUseCase.insertAll(imageList.map { imageData -> imageData.mapper() })
