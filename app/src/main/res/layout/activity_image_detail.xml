@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="viewModel"
             type="com.overman.main.presenter.view.imageselect.ImageSelectViewModel" />
+
+        <variable
+            name="image"
+            type="com.overman.main.domain.model.image.Image" />
+
+        <variable
+            name="activity"
+            type="com.overman.main.presenter.view.imageselect.ImageDetailActivity" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:padding="12dp"
+        tools:context=".view.main.MainActivity">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tbToolbar"
@@ -21,11 +33,131 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvImageDataListView"
+        <ImageView
+            android:id="@+id/ivProfile"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/tbToolbar" />
+            android:layout_height="360dp"
+            app:profileImg="@{image.download_url}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/llLike"
+            tools:src="@drawable/img_empty" />
+
+        <LinearLayout
+            android:id="@+id/llLike"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivProfile"
+            app:layout_constraintBottom_toTopOf="@+id/tvId">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/check_like"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/cbLike" />
+
+            <CheckBox
+                android:id="@+id/cbLike"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:checked="@{image.like == 1 ? true : false}"
+                android:onClick="@{activity::checkLike}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/llText" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{@string/id(image.id)}"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/llLike"
+            app:layout_constraintBottom_toTopOf="@+id/tvAuthor"
+            tools:text="id : 117" />
+
+        <TextView
+            android:id="@+id/tvAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{@string/author(image.author)}"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvId"
+            app:layout_constraintBottom_toTopOf="@+id/tvWidth"
+            tools:text="author : Daniel Ebersole" />
+
+        <TextView
+            android:id="@+id/tvWidth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@{@string/width(image.width)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAuthor"
+            app:layout_constraintBottom_toTopOf="@+id/tvHeight"
+            tools:text="width : 1544" />
+
+        <TextView
+            android:id="@+id/tvHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="@{@string/height(image.height)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWidth"
+            app:layout_constraintBottom_toTopOf="@+id/tvUrl"
+            tools:text="height : 1024" />
+
+        <TextView
+            android:id="@+id/tvUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{@string/url(image.url)}"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/btPrev"
+            app:layout_constraintTop_toBottomOf="@id/tvWidth"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="download url : https://picsum.photos/id/117/1544/1024" />
+
+        <Button
+            android:id="@+id/btPrev"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text="@string/prev"
+            android:background="@color/gray"
+            android:onClick="@{activity::prevBtnClick}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btNext"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvUrl" />
+
+        <Button
+            android:id="@+id/btNext"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:text="@string/next"
+            android:background="@color/gray"
+            android:onClick="@{activity::nextBtnClick}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btPrev"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvUrl" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

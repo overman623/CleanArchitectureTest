@@ -1,6 +1,7 @@
 package com.overman.main.presenter.view.imageselect
 
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import com.overman.main.R
 import com.overman.main.databinding.ActivityImageDetailBinding
@@ -12,6 +13,7 @@ class ImageDetailActivity : DataBindViewModelActivity<ActivityImageDetailBinding
 
     companion object {
         const val EXTRA_SELECT_IMAGE_ID = "EXTRA_SELECT_IMAGE_ID"
+//        const val RESULT_CODE_FINISH_ACTIVITY = 1111
     }
 
     private val selectImageId: String by lazy {
@@ -26,10 +28,25 @@ class ImageDetailActivity : DataBindViewModelActivity<ActivityImageDetailBinding
     }
 
     override fun initObserve() {
+        binding.activity = this
+        binding.viewModel = viewModel
+//        setResult(RESULT_CODE_FINISH_ACTIVITY)
     }
 
     override fun initView() {
-        Log.d(ImageSelectViewModel.TAG, "2. 데이터 베이스에 데이터가 있는지 확인 : $selectImageId")
+        Log.d(ImageSelectViewModel.TAG, "selectImageId : $selectImageId")
+    }
+
+    fun prevBtnClick(view: View) {
+        Log.d(ImageSelectViewModel.TAG, "prevBtnClick")
+    }
+
+    fun nextBtnClick(view: View) {
+        Log.d(ImageSelectViewModel.TAG, "nextBtnClick")
+    }
+
+    fun checkLike(view: View) {
+        Log.d(ImageSelectViewModel.TAG, "checkLike")
     }
 
 }
