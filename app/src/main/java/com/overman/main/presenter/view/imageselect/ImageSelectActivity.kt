@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.overman.main.R
 import com.overman.main.databinding.ActivityImageSelectBinding
 import com.overman.main.presenter.base.DataBindViewModelActivity
+import com.overman.main.presenter.util.Lg
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.view.*
 
@@ -28,9 +29,10 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
     }
 
     override fun initListener() {
-        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-//            it.resultCode
-//            it.data?.getIntExtra()
+        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == ImageDetailActivity.RESULT_CODE_REFRESH_CHECKED_UI) {
+                // todo : refresh recycler view check like
+            }
         }
     }
 

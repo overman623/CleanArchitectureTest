@@ -13,7 +13,7 @@ class ImageDetailActivity : DataBindViewModelActivity<ActivityImageDetailBinding
 
     companion object {
         const val EXTRA_SELECT_IMAGE_ID = "EXTRA_SELECT_IMAGE_ID"
-//        const val RESULT_CODE_FINISH_ACTIVITY = 1111
+        const val RESULT_CODE_REFRESH_CHECKED_UI = 1111
     }
 
     private val selectImageId: String by lazy {
@@ -30,7 +30,6 @@ class ImageDetailActivity : DataBindViewModelActivity<ActivityImageDetailBinding
     override fun initObserve() {
         binding.activity = this
         binding.viewModel = viewModel
-//        setResult(RESULT_CODE_FINISH_ACTIVITY)
     }
 
     override fun initView() {
@@ -47,6 +46,7 @@ class ImageDetailActivity : DataBindViewModelActivity<ActivityImageDetailBinding
 
     fun checkLike(view: View) {
         Log.d(ImageSelectViewModel.TAG, "checkLike")
+        setResult(RESULT_CODE_REFRESH_CHECKED_UI)
     }
 
 }
