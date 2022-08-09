@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.ListAdapter
 import com.overman.main.databinding.ItemImageBinding
 import com.overman.main.domain.model.image.Image
 
-class ImageAdapter(private val imageList: MutableList<Image> = mutableListOf(), private val actionCheckLike: ((String, Int) -> Boolean)? = null): ListAdapter<Image, ImageViewHolder>(ImageDiffUtil) {
+class ImageAdapter(private val imageList: MutableList<Image> = mutableListOf(), private val actionCheckLike: ((String, Int) -> Unit)? = null): ListAdapter<Image, ImageViewHolder>(ImageDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         val binding = ItemImageBinding.inflate(LayoutInflater.from(parent.context))
-        return ImageViewHolder(binding)
+        return ImageViewHolder(binding, actionCheckLike)
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {

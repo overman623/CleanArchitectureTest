@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.overman.main.databinding.ItemImageBinding
 import com.overman.main.domain.model.image.Image
 
-class ImageViewHolder(private val binding: ItemImageBinding, private val actionCheckLike: ((String, Int) -> Boolean)? = null) : RecyclerView.ViewHolder(binding.root) {
+class ImageViewHolder(private val binding: ItemImageBinding, private val actionCheckLike: ((String, Int) -> Unit)? = null) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(image: Image) {
         binding.image = image
@@ -22,10 +22,10 @@ class ImageViewHolder(private val binding: ItemImageBinding, private val actionC
         } else {
             0
         }
-        val success = actionCheckLike?.invoke(binding.image?.id ?: "", like)
-        if (success == true) {
-            binding.image?.like = like
-        }
+        actionCheckLike?.invoke(binding.image?.id ?: "", like)
+//        if (success == true) {
+//            binding.image?.like = like
+//        }
     }
 
 }

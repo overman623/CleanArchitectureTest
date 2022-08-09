@@ -1,6 +1,7 @@
 package com.overman.main.presenter.view.imageselect
 
 import android.content.Intent
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -24,7 +25,7 @@ class ImageSelectActivity : DataBindViewModelActivity<ActivityImageSelectBinding
 
     private val imageAdapter by lazy {
         ImageAdapter(actionCheckLike = { id, like ->
-            true
+            viewModel.updateLike(id, like)
         })
     }
 
