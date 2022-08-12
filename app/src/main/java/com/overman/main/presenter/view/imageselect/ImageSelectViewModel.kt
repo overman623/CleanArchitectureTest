@@ -28,6 +28,10 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
     private val currentPage: LiveData<Int>
         get() = _currentPage
 
+    private val _currentImage = MutableLiveData<Image>()
+    val currentImage: LiveData<Image>
+        get() = _currentImage
+
     fun loadImageData(limit: Int) {
         viewEvent(Event(EVENT_SHOW_LOADING_VIEW))
         viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
@@ -104,6 +108,15 @@ class ImageSelectViewModel @Inject constructor(private val imageUseCase: ImageUs
         }) {
             val entities = imageUseCase.getLocalDataList()
             _imageResponseDataList.postValue(entities.map { entity -> entity.mapper() })
+        }
+    }
+
+    fun loadLocalImage(imageId: String) {
+        viewModelScope.launch(Dispatchers.IO + CoroutineExceptionHandler { _, throwable ->
+            Log.e(TAG, throwable.message ?: "")
+        }) {
+            val entity = imageUseCase.getLocalDataById(imageId)
+            _currentImage.postValue(entity?.mapper())
         }
     }
 

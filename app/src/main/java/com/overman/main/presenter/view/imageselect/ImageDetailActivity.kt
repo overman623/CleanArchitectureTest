@@ -30,6 +30,14 @@ class ImageDetailActivity : DataBindViewModelActivity<ActivityImageDetailBinding
     override fun initObserve() {
         binding.activity = this
         binding.viewModel = viewModel
+
+        viewModel.currentImage.observe(this) { image ->
+            if (image != null) {
+                binding.image = image
+            }
+        }
+
+        viewModel.loadLocalImage(selectImageId)
     }
 
     override fun initView() {
